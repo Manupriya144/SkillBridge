@@ -33,10 +33,10 @@ if (isset($_POST['login'])) {
             $user = $result->fetch_assoc();
             if (password_verify($password, $user['password'])) {
                 $_SESSION['user_id'] = $user['user_id'];
-                // Set cookies for login details (email and username, NOT password)
-                setcookie('user_email', $user['email'], time() + (7 * 24 * 60 * 60), "/"); // 7 days
-                setcookie('user_name', $user['name'], time() + (7 * 24 * 60 * 60), "/"); // 7 days
-                setcookie('user_id', $user['user_id'], time() + (7 * 24 * 60 * 60), "/"); // 7 days
+                // Set cookies 
+                setcookie('user_email', $user['email'], time() + (7 * 24 * 60 * 60), "/"); 
+                setcookie('user_name', $user['name'], time() + (7 * 24 * 60 * 60), "/"); 
+                setcookie('user_id', $user['user_id'], time() + (7 * 24 * 60 * 60), "/");
                 setcookie('user_role', $user['role'] ?? 'student', time() + (7 * 24 * 60 * 60), "/");
                 header("Location: ../view/dashboard.php");
                 exit();
